@@ -1,14 +1,13 @@
-vim.opt.backup = false                          -- don't create a backup file when modifying files
-vim.opt.writebackup = false                     -- Don't create backups on every write
-vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
-vim.opt.completeopt = { "menuone", "noselect" } -- menuone - show completion menu when only one option. noselect - don't automatically select the first completion item (unsure about this one)
+vim.opt.backup = false            -- don't create a backup file when modifying files
+vim.opt.writebackup = false       -- Don't create backups on every write
+vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+vim.opt.cmdheight = 2             -- more space in the neovim command line for displaying messages
 vim.opt.fileencoding = "utf-8"
-vim.opt.ignorecase = true                       -- ignore case in search patterns
+vim.opt.ignorecase = true         -- ignore case in search patterns
 vim.opt.mouse = ""
-vim.opt.pumheight = 10                          -- pop up menu height
+vim.opt.pumheight = 10            -- pop up menu height
 -- vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2                         -- always show tabs
+vim.opt.showtabline = 2           -- always show tabs
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true     -- force all horizontal splits to go below current window
@@ -24,8 +23,7 @@ vim.opt.cursorline = true     -- highlight the current line
 vim.opt.number = true         -- set numbered lines
 vim.opt.relativenumber = true -- set relative numbered lines
 vim.opt.numberwidth = 2       -- set number column width to 2 {default 4}
-vim.opt.signcolumn =
-"yes"                         -- always show the sign column, otherwise it would shift the text each time
+vim.opt.signcolumn = "yes"    -- always show the sign column, otherwise it would shift the text each time
 vim.opt.scrolloff = 8         -- minimal number of lines to keep above and below cursor
 vim.opt.sidescrolloff = 8
 
