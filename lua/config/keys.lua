@@ -99,3 +99,6 @@ keymap("n", "<leader>ss",
 keymap("n", "<leader>ss",
     "<cmd>lua require('telescope.builtin').lsp_workspace_symbols({ symbols = symbols_to_search })<cr>",
     { desc = "Symbols (workspace)" })
+
+keymap("n", "<leader>[", "<cmd>lua require('illuminate').goto_prev_reference()<cr>", { desc = "Prev reference" })
+keymap("n", "<leader>]", "<cmd>lua require('illuminate').goto_next_reference()<cr>", { desc = "Next reference" })

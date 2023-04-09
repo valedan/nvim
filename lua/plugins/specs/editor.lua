@@ -289,5 +289,9 @@ return {
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
       end,
     },
-  }
+  },
+  {
+    "RRethy/vim-illuminate"
+  },
+
 }

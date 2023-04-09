@@ -22,5 +22,6 @@
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "sonokai": { "branch": "master", "commit": "a4d96b68fb1ba00fb2e91d2f46705de9cddbb348" },
   "telescope.nvim": { "branch": "master", "commit": "2ea61f1952f0ad10e4fcc282468a06d3e69674c2" },
+  "vim-illuminate": { "branch": "master", "commit": "a2907275a6899c570d16e95b9db5fd921c167502" },
   "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" }
 }
