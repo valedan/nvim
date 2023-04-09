@@ -92,6 +92,7 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
       "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
     },
     opts = function()
       local cmp = require("cmp")
@@ -142,8 +143,9 @@ return {
           end, { "i", "s" }),
         },
         sources = cmp.config.sources({
-          { name = "luasnip" },
+          { name = "nvim_lsp" },
           { name = "nvim-lua" },
+          { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
         }),
