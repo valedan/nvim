@@ -169,5 +169,46 @@ return {
         },
       }
     end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    version = false, -- use latest
+    opts = {
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        path_display = { "smart" },
+        mappings = {
+          i = {
+            ["<C-t>"] = function(...)
+              return require("trouble.providers.telescope").open_with_trouble(...)
+            end,
+            ["<C-S-t>"] = function(...)
+              return require("trouble.providers.telescope").open_selected_with_trouble(...)
+            end,
+            ["<C-h>"] = function() -- show hidden files
+              require("telescope.builtin").find_files({ hidden = true })
+            end,
+            ["<C-Down>"] = function(...)
+              return require("telescope.actions").cycle_history_next(...)
+            end,
+            ["<C-Up>"] = function(...)
+              return require("telescope.actions").cycle_history_prev(...)
+            end,
+            ["<C-f>"] = function(...)
+              return require("telescope.actions").preview_scrolling_down(...)
+            end,
+            ["<C-b>"] = function(...)
+              return require("telescope.actions").preview_scrolling_up(...)
+            end,
+          },
+          n = {
+            ["q"] = function(...)
+              return require("telescope.actions").close(...)
+            end,
+          },
+        },
+      },
+    },
   }
 }
