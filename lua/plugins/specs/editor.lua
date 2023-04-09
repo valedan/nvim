@@ -210,5 +210,33 @@ return {
         },
       },
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = false,
+    build = ":TSUpdate",
+    opts = {
+      highlight = {
+        enable = true,
+        disable = { "" }, -- list of language that will be disabled
+      },
+      indent = { enable = true },
+      context_commentstring = { enable = true, enable_autocmd = false },
+      ensure_installed = "all",
+      sync_install = false,
+      ignore_install = { "" }, -- List of parsers to ignore installing
+      incremental_selection = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    }
   }
 }

@@ -2,7 +2,6 @@ vim.opt.backup = false            -- don't create a backup file when modifying f
 vim.opt.writebackup = false       -- Don't create backups on every write
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2             -- more space in the neovim command line for displaying messages
-vim.opt.fileencoding = "utf-8"
 vim.opt.ignorecase = true         -- ignore case in search patterns
 vim.opt.mouse = ""
 vim.opt.pumheight = 10            -- pop up menu height
