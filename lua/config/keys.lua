@@ -1,5 +1,6 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
+-- TODO: replace this with the one from lazyvim
 local keymap = vim.api.nvim_set_keymap
 
 local symbols_to_search = {
@@ -41,18 +42,14 @@ keymap("n", "<C-S-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "∆", ":m .+1<CR>==", opts)
-keymap("v", "˚", ":m .-2<CR>==", opts)
+keymap("n", "∆", ":m .+1<CR>==", opts)
+keymap("n", "˚", ":m .-2<CR>==", opts)
 
 -- Maintain clipboard when pasting over things
 keymap("v", "p", '"_dP', opts)
@@ -90,15 +87,35 @@ keymap("n", "<leader>sm", "<cmd>Telescope marks<cr>", { desc = "Marks" })
 keymap("n", "<leader>sM", "<cmd>Telescope man_pages<cr>", { desc = "Man Pages" })
 keymap("n", "<leader>so", "<cmd>Telescope vim_options<cr>", { desc = "Options" })
 keymap("n", "<leader>sR", "<cmd>Telescope resume<cr>", { desc = "Resume" })
+keymap("n", "<leader>se", "<cmd>SearchSession<cr>", { desc = "Search Session" })
 keymap("n", "<leader>sw", "<cmd>lua require('telescope.builtin').grep_string()<cr>", { desc = "Word (or Selection)" })
 keymap("n", "<leader>uC", "<cmd>lua require('telescope.builtin').colorscheme({ enable_preview = true })<cr>",
     { desc = "Colorscheme" })
 keymap("n", "<leader>ss",
     "<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols = symbols_to_search })<cr>",
     { desc = "Symbols (document)" })
-keymap("n", "<leader>ss",
+keymap("n", "<leader>sS",
     "<cmd>lua require('telescope.builtin').lsp_workspace_symbols({ symbols = symbols_to_search })<cr>",
     { desc = "Symbols (workspace)" })
 
 keymap("n", "<leader>[", "<cmd>lua require('illuminate').goto_prev_reference()<cr>", { desc = "Prev reference" })
 keymap("n", "<leader>]", "<cmd>lua require('illuminate').goto_next_reference()<cr>", { desc = "Next reference" })
+
+-- Clear search with <esc>
+keymap("n", "<esc>", "<cmd>noh<cr><esc>", opts)
+keymap("i", "<esc>", "<cmd>noh<cr><esc>", opts)
+
+-- save file
+keymap("n", "<C-s>", "<cmd>w<cr><esc>", opts)
+keymap("i", "<C-s>", "<cmd>w<cr><esc>", opts)
+
+-- new file
+keymap("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- windows
+keymap("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+keymap("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+keymap("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+keymap("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+keymap("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+keymap("n", "<leader>|", "<C-W>v", { desc = "Split window right" })

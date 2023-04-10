@@ -17,6 +17,8 @@ vim.opt.undofile = true       -- enable persistent undo
 vim.opt.updatetime = 300      -- faster completion (4000ms default)
 vim.opt.expandtab = true      -- convert tabs to spaces
 vim.opt.shiftwidth = 4        -- the number of spaces inserted for each indentation
+vim.opt.shiftround = true     -- round indent
+vim.opt.wrap = true           -- word wrap
 vim.opt.tabstop = 4           -- insert 2 spaces for a tab
 vim.opt.cursorline = true     -- highlight the current line
 vim.opt.number = true         -- set numbered lines
@@ -28,3 +30,8 @@ vim.opt.sidescrolloff = 8
 
 vim.cmd "set whichwrap+=[,],h,l" -- allow left and right arrows and h and l to wrap around to next or previous lines
 vim.cmd [[set iskeyword+=-]]     -- treat hyphenated (or kebab case) words as a single word
+
+vim.opt.autowriteall = true      -- Enable auto write
+
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.inccommand = "nosplit" -- preview incremental substitute
