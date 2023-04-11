@@ -69,7 +69,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Telescope --
 keymap("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Switch Buffer" })
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Switch Buffer" })
-keymap("n", "<leader>sg", "<cmd>require'telescope.builtin'.live_grep()<cr>", { desc = "Find in Files (Grep)" })
+keymap("n", "<leader>sg", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", { desc = "Find in Files (Grep)" })
 keymap("n", "<leader>/", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find in Files (Grep)" })
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Find Files" })
 keymap("n", "<leader>sc", "<cmd>Telescope command_history<cr>", { desc = "Command History" })

@@ -1,12 +1,11 @@
 vim.opt.backup = false            -- don't create a backup file when modifying files
 vim.opt.writebackup = false       -- Don't create backups on every write
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 2             -- more space in the neovim command line for displaying messages
 vim.opt.ignorecase = true         -- ignore case in search patterns
 vim.opt.mouse = ""
 vim.opt.pumheight = 10            -- pop up menu height
--- vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2           -- always show tabs
+vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showtabline = 0           -- never show tabs
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true     -- force all horizontal splits to go below current window
