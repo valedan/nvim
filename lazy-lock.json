@@ -8,6 +8,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "friendly-snippets": { "branch": "main", "commit": "8d91ba2dc2421a54981115f61b914974f938fa77" },
   "gitsigns.nvim": { "branch": "main", "commit": "372d5cb485f2062ac74abc5b33054abac21d8b58" },
+  "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
   "lualine.nvim": { "branch": "master", "commit": "84ffb80e452d95e2c46fa29a98ea11a240f7843e" },
   "magma-nvim": { "branch": "main", "commit": "395b48e2e202d82fca76c15d2dcd8785c125d686" },
@@ -26,6 +27,7 @@
   "session-lens": { "branch": "main", "commit": "b15e36782d01abacf6cd44e12f3292632064ab91" },
   "sonokai": { "branch": "master", "commit": "a4d96b68fb1ba00fb2e91d2f46705de9cddbb348" },
   "telescope.nvim": { "branch": "master", "commit": "2ea61f1952f0ad10e4fcc282468a06d3e69674c2" },
+  "trouble.nvim": { "branch": "main", "commit": "2ae7237c2917d661f458443c9a88680f8ca2d7b2" },
   "vim-illuminate": { "branch": "master", "commit": "a2907275a6899c570d16e95b9db5fd921c167502" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" }

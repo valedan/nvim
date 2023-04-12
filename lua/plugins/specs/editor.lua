@@ -117,6 +117,23 @@ return {
 					}),
 					["<CR>"] = cmp.mapping.confirm({ select = false }), --  only confirm explicitly selected items.
 					-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
+                    ["<Down>"] = cmp.mapping(function(fallback)
+						local cmp = require("cmp")
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
+                    ["<Up>"] = cmp.mapping(function(fallback)
+						local cmp = require("cmp")
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						local luasnip = require("luasnip")
 						local cmp = require("cmp")
@@ -322,5 +339,10 @@ return {
     {
         'christoomey/vim-tmux-navigator'
 
+    },
+    {
+        'ThePrimeagen/harpoon',
+
     }
+
 }
