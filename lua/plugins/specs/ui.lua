@@ -5,6 +5,12 @@ return {
 			enable_italic = 1,
 		},
 	},
+    {
+        'folke/tokyonight.nvim',
+        opts = {
+            terminal_colors = false
+        }
+    },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "MunifTanjim/nui.nvim" },
 	{

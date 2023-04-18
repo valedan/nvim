@@ -359,10 +359,19 @@ return {
 					return 20
 				end
 			end,
+            shade_terminals = false,
             shading_factor = -100,
             persist_mode = false
 		}
 	},
+    {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup({})
+        end
+
+    }
+
 
 
 }
