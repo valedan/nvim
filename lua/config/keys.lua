@@ -53,8 +53,10 @@ keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap("s", "<A-j>", ":m .+1<CR>==", opts)
+keymap("s", "<A-k>", ":m .-2<CR>==", opts)
 
+keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 -- Maintain clipboard when pasting over things
 keymap("v", "p", '"_dP', opts)
 
@@ -69,6 +71,8 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("n", "<leader>tt", "<cmd>ToggleTerm direction='vertical'<cr>", {desc = "Toggle Terminal"})
+keymap('n', "<leader>rt", "<cmd>RunPytest<cr>", {desc = "Run Pytest"})
 
 -- Telescope --
 keymap("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Switch Buffer" })
@@ -125,13 +129,13 @@ keymap("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
 keymap("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
 --harpoon
-keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", {desc = "Harpoon - Add file"})
-keymap("n", "<leader>hl", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", {desc = "Harpoon - View list"})
-keymap("n", "<A-1>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-2>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-3>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-4>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-5>", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-6>", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", {desc = "Harpoon - Go to file"})
-keymap("n", "<A-[>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", {desc = "Harpoon - Prev file"})
-keymap("n", "<A-]>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", {desc = "Harpoon - Next file"})
+keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "Harpoon - Add file" })
+keymap("n", "<leader>hl", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = "Harpoon - View list" })
+keymap("n", "<A-1>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-2>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-3>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-4>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-5>", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-6>", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", { desc = "Harpoon - Go to file" })
+keymap("n", "<A-[>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { desc = "Harpoon - Prev file" })
+keymap("n", "<A-]>", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "Harpoon - Next file" })

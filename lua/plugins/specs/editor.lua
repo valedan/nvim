@@ -117,7 +117,7 @@ return {
 					}),
 					["<CR>"] = cmp.mapping.confirm({ select = false }), --  only confirm explicitly selected items.
 					-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
-                    ["<Down>"] = cmp.mapping(function(fallback)
+					["<Down>"] = cmp.mapping(function(fallback)
 						local cmp = require("cmp")
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -125,8 +125,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-
-                    ["<Up>"] = cmp.mapping(function(fallback)
+					["<Up>"] = cmp.mapping(function(fallback)
 						local cmp = require("cmp")
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -295,15 +294,15 @@ return {
 					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
 				end
 
-                -- stylua: ignore start
-                map("n", "]h", gs.next_hunk, "Next Hunk")
-                map("n", "[h", gs.prev_hunk, "Prev Hunk")
-                map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-                map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-                map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-                map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-                map("n", "<leader>ghd", gs.diffthis, "Diff This")
-                map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+				-- stylua: ignore start
+				map("n", "]h", gs.next_hunk, "Next Hunk")
+				map("n", "[h", gs.prev_hunk, "Prev Hunk")
+				map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+				map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+				map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+				map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+				map("n", "<leader>ghd", gs.diffthis, "Diff This")
+				map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
 			end,
 		},
 	},
@@ -331,18 +330,39 @@ return {
 	},
 	{
 		"dccsillag/magma-nvim",
-        disable = true,
+		disable = true,
 		build = ":UpdateRemotePlugins",
 		config = function()
 		end,
 	},
-    {
-        'christoomey/vim-tmux-navigator'
+	{
+		'christoomey/vim-tmux-navigator'
 
-    },
-    {
-        'ThePrimeagen/harpoon',
+	},
+	{
+		'ThePrimeagen/harpoon',
 
-    }
+	},
+	{
+		'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim'
+	},
+	{
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		opts = {
+			size = function(term)
+				if term.direction == "horizontal" then
+					return 20
+				elseif term.direction == "vertical" then
+					return vim.o.columns * 0.4
+				else
+					return 20
+				end
+			end,
+            shading_factor = -100,
+            persist_mode = false
+		}
+	},
+
 
 }
