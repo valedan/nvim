@@ -11,6 +11,9 @@ return {
             terminal_colors = false
         }
     },
+    {
+        "sainnhe/gruvbox-material"
+    },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "MunifTanjim/nui.nvim" },
 	{
@@ -88,5 +91,5 @@ return {
 			require("neoscroll").setup({})
 		end,
 
-    }
+    },
 }

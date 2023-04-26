@@ -181,7 +181,7 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				experimental = {
-					ghost_text = true,
+					ghost_text = false,
 				},
 			}
 		end,
@@ -294,15 +294,15 @@ return {
 					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
 				end
 
-				-- stylua: ignore start
-				map("n", "]h", gs.next_hunk, "Next Hunk")
-				map("n", "[h", gs.prev_hunk, "Prev Hunk")
-				map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-				map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-				map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-				map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-				map("n", "<leader>ghd", gs.diffthis, "Diff This")
-				map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+                -- stylua: ignore start
+                map("n", "]h", gs.next_hunk, "Next Hunk")
+                map("n", "[h", gs.prev_hunk, "Prev Hunk")
+                map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+                map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+                map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+                map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+                map("n", "<leader>ghd", gs.diffthis, "Diff This")
+                map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
 			end,
 		},
 	},
@@ -332,46 +332,94 @@ return {
 		"dccsillag/magma-nvim",
 		disable = true,
 		build = ":UpdateRemotePlugins",
-		config = function()
-		end,
+		config = function() end,
 	},
 	{
-		'christoomey/vim-tmux-navigator'
-
+		"christoomey/vim-tmux-navigator",
 	},
 	{
-		'ThePrimeagen/harpoon',
-
+		"ThePrimeagen/harpoon",
 	},
 	{
-		'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim'
+		"sindrets/diffview.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
 	},
 	{
-		'akinsho/toggleterm.nvim',
+		"akinsho/toggleterm.nvim",
 		version = "*",
 		opts = {
 			size = function(term)
 				if term.direction == "horizontal" then
 					return 20
 				elseif term.direction == "vertical" then
-					return vim.o.columns * 0.4
+					return vim.o.columns * 0.3
 				else
 					return 20
 				end
 			end,
-            shade_terminals = false,
-            shading_factor = -100,
-            persist_mode = false
-		}
+			shade_terminals = false,
+			shading_factor = -100,
+			persist_mode = false,
+		},
 	},
-    {
-        "kylechui/nvim-surround",
-        config = function()
-            require("nvim-surround").setup({})
-        end
-
-    }
-
-
-
+	{
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = true,
+					auto_refresh = true,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-CR>",
+					},
+					layout = {
+						position = "bottom", -- | top | left | right
+						ratio = 0.4,
+					},
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					debounce = 75,
+					keymap = {
+						accept = "<A-c>",
+						accept_word = false,
+						accept_line = false,
+						next = "<A-]>",
+						prev = "<A-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				filetypes = {
+					yaml = false,
+					markdown = false,
+					help = false,
+					gitcommit = false,
+					gitrebase = false,
+					hgcommit = false,
+					svn = false,
+					cvs = false,
+					["."] = false,
+				},
+				copilot_node_command = "node", -- Node.js version must be > 16.x
+				server_opts_overrides = {},
+			})
+		end,
+	},
 }
