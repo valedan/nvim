@@ -40,6 +40,15 @@ keymap("i", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("i", "<C-l>", "<C-w>l", opts)
 
+keymap("n", "<C-Left>", "<C-w>h", opts)
+keymap("i", "<C-Left>", "<C-w>h", opts)
+keymap("n", "<C-Down>", "<C-w>j", opts)
+keymap("i", "<C-Down>", "<C-w>j", opts)
+keymap("n", "<C-Up>", "<C-w>k", opts)
+keymap("i", "<C-Up>", "<C-w>k", opts)
+keymap("n", "<C-Right>", "<C-w>l", opts)
+keymap("i", "<C-Right>", "<C-w>l", opts)
+
 -- Resize with arrows
 keymap("n", "<C-S-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-S-Down>", ":resize -2<CR>", opts)
@@ -55,8 +64,13 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("s", "<A-j>", ":m .+1<CR>==", opts)
 keymap("s", "<A-k>", ":m .-2<CR>==", opts)
-
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)
+keymap("s", "<A-j>", ":m .+1<CR>==", opts)
+keymap("s", "<A-k>", ":m .-2<CR>==", opts)
+keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+
 -- Maintain clipboard when pasting over things
 keymap("v", "p", '"_dP', opts)
 
@@ -71,6 +85,10 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "<C-Left>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-Down>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-Up>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-Right>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("n", "<leader>tt", "<cmd>ToggleTerm direction='vertical'<cr>", {desc = "Toggle Terminal"})
 keymap('n', "<leader>rt", "<cmd>RunPytest<cr>", {desc = "Run Pytest"})
 

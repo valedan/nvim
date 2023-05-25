@@ -46,6 +46,7 @@ end
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -219,6 +220,27 @@ return {
 						end,
 					},
 					n = {
+						["<C-t>"] = function(...)
+							return require("trouble.providers.telescope").open_with_trouble(...)
+						end,
+						["<C-S-t>"] = function(...)
+							return require("trouble.providers.telescope").open_selected_with_trouble(...)
+						end,
+						["<C-h>"] = function() -- show hidden files
+							require("telescope.builtin").find_files({ hidden = true })
+						end,
+						["<C-Down>"] = function(...)
+							return require("telescope.actions").cycle_history_next(...)
+						end,
+						["<C-Up>"] = function(...)
+							return require("telescope.actions").cycle_history_prev(...)
+						end,
+						["<C-f>"] = function(...)
+							return require("telescope.actions").preview_scrolling_down(...)
+						end,
+						["<C-b>"] = function(...)
+							return require("telescope.actions").preview_scrolling_up(...)
+						end,
 						["q"] = function(...)
 							return require("telescope.actions").close(...)
 						end,
@@ -235,6 +257,7 @@ return {
 			highlight = {
 				enable = true,
 				disable = { "" }, -- list of language that will be disabled
+                additional_vim_regex_highlighting = { "markdown" },
 			},
 			indent = { enable = true },
 			context_commentstring = { enable = true, enable_autocmd = false },
@@ -422,4 +445,43 @@ return {
 			})
 		end,
 	},
+    {
+        "epwalsh/obsidian.nvim",
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- Optional, for completion.
+            "hrsh7th/nvim-cmp",
+
+            -- Optional, for search and quick-switch functionality.
+            "nvim-telescope/telescope.nvim",
+        },
+        opts = {
+            dir = '~/Library/"Mobile Documents"/iCloud~md~obsidian/Documents/exomind/',  -- no need to call 'vim.fn.expand' here
+
+            -- Optional, if you keep daily notes in a separate directory.
+            daily_notes = {
+                folder = "_Daily",
+            },
+
+            -- Optional, completion.
+            completion = {
+                nvim_cmp = true,  -- if using nvim-cmp, otherwise set to false
+            },
+        },
+        config = function(_, opts)
+            require("obsidian").setup(opts)
+
+            -- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
+            -- see also: 'follow_url_func' config option above.
+            vim.keymap.set("n", "gf", function()
+            if require("obsidian").util.cursor_on_markdown_link() then
+                return "<cmd>ObsidianFollowLink<CR>"
+            else
+                return "gf"
+            end
+            end, { noremap = false, expr = true })
+        end,
+    }
 }
