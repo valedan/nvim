@@ -55,3 +55,4 @@ map("n", "<A-5>", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", { desc = "Ha
 map("n", "<A-6>", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", { desc = "Harpoon - Go to file" })
 map("n", "<A-[>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { desc = "Harpoon - Prev file" })
 map("n", "<A-]>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Harpoon - Next file" })
+
