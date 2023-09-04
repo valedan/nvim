@@ -1,58 +1,76 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+local map = vim.api.nvim_set_keymap
+local defaults = { noremap = true, silent = true }
 
--- This file is automatically loaded by lazyvim.config.init
-
-local utils = require("utils")
-local map = utils.map
-
+local enabled = true
+function _G.toggle_diagnostics()
+  enabled = not enabled
+  if enabled then
+    vim.diagnostic.enable()
+  else
+    vim.diagnostic.disable()
+  end
+end
 -- Navigate by displayed lines
-map("n", "<Down>", "gj", { silent = true })
-map("n", "<Up>", "gk", { silent = true })
+map("n", "<Down>", "gj", defaults)
+map("n", "<Up>", "gk", defaults)
 
 -- Move to window using the <ctrl> arrow keys
-map("n", "<C-Left>", "<C-w>h", { desc = "Go to left window", remap = true })
-map("n", "<C-Down>", "<C-w>j", { desc = "Go to lower window", remap = true })
-map("n", "<C-Up>", "<C-w>k", { desc = "Go to upper window", remap = true })
-map("n", "<C-Right>", "<C-w>l", { desc = "Go to right window", remap = true })
+map("n", "<C-Left>", "<C-w>h", defaults)
+map("n", "<C-Down>", "<C-w>j", defaults)
+map("n", "<C-Up>", "<C-w>k", defaults)
+map("n", "<C-Right>", "<C-w>l", defaults)
+map("n", "<C-Left>", ":TmuxNavigateLeft<cr>", defaults)
+map("n", "<C-Down>", ":TmuxNavigateDown<cr>", defaults)
+map("n", "<C-Up>", ":TmuxNavigateUp<cr>", defaults)
+map("n", "<C-Right>", ":TmuxNavigateRight<cr>", defaults)
 
 -- Resize window using <ctrl-shift> arrow keys
-map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-S-Left>", ":vertical resize -2<cr>", defaults)
+map("n", "<C-S-Down>", ":resize -2<cr>", defaults)
+map("n", "<C-S-Up>", ":resize +2<cr>", defaults)
+map("n", "<C-S-Right>", ":vertical resize +2<cr>", defaults)
 
 -- Resize window using <ctrl-shift> hjkl keys
-map("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-S-j>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-S-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
-map("n", "<C-Left>", ":TmuxNavigateLeft<cr>", { desc = "Go to Left window" })
-map("n", "<C-Down>", ":TmuxNavigateDown<cr>", { desc = "Go to Down window" })
-map("n", "<C-Up>", ":TmuxNavigateUp<cr>", { desc = "Go to Up window" })
-map("n", "<C-Right>", ":TmuxNavigateRight<cr>", { desc = "Go to Right window" })
+map("n", "<C-S-h>", ":vertical resize -2<cr>", defaults)
+map("n", "<C-S-j>", ":resize -2<cr>", defaults)
+map("n", "<C-S-k>", ":resize +2<cr>", defaults)
+map("n", "<C-S-l>", ":vertical resize +2<cr>", defaults)
 
 -- Move Lines
-map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("n", "<A-Down>", ":m .+1<cr>==", defaults)
+map("n", "<A-Up>", ":m .-2<cr>==", defaults)
+map("i", "<A-Down>", "<esc>:m .+1<cr>==gi", defaults)
+map("i", "<A-Up>", "<esc>:m .-2<cr>==gi", defaults)
+map("v", "<A-Down>", ":m '>+1<cr>gv=gv", defaults)
+map("v", "<A-Up>", ":m '<-2<cr>gv=gv", defaults)
 
-map("n", "<leader>ft", "<cmd>ToggleTerm direction='vertical'<cr>", { desc = "Toggle Terminal" })
+map("n", "<leader>bb", "<cmd>e #<cr>", { noremap = true, silent = true, desc = "Switch to Other Buffer" })
 
---harpoon
-map("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = "Harpoon - Add file" })
-map("n", "<leader>hl", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = "Harpoon - View list" })
-map("n", "<A-1>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-2>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-3>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-4>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-5>", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-6>", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", { desc = "Harpoon - Go to file" })
-map("n", "<A-[>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { desc = "Harpoon - Prev file" })
-map("n", "<A-]>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Harpoon - Next file" })
+-- Clear search with <esc>
+map("n", "<esc>", "<cmd>noh<cr><esc>", { noremap = true, silent = true, desc = "Escape and clear hlsearch" })
+map("i", "<esc>", "<cmd>noh<cr><esc>", { noremap = true, silent = true, desc = "Escape and clear hlsearch" })
 
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { noremap = true, silent = true, expr = true, desc = "Prev search result" })
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { noremap = true, silent = true, desc = "New File" })
+
+map("n", "<leader>xl", "<cmd>lopen<cr>", { noremap = true, silent = true, desc = "Location List" })
+map("n", "<leader>xq", "<cmd>copen<cr>", { noremap = true, silent = true, desc = "Quickfix List" })
+
+-- toggle options
+-- TODO: Get format toggle working
+-- map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
+map("n", "<leader>ud", ":call v:lua.toggle_diagnostics()<CR>", { noremap = true, silent = true, desc = "Toggle Diagnostics" })
+-- if vim.lsp.inlay_hint then
+  -- map("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+-- end
+
+map("n", "<leader>-", "<C-W>s", { desc = "Split window below", silent = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window right", silent = true })
