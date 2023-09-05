@@ -1,6 +1,11 @@
 -- vim.lsp.set_log_level('debug')
 
 -- [[ Configure LSP ]]
+
+vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint", {text = "" , texthl = "DiagnosticSignHint"})
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
     local nmap = function(keys, func, desc)
@@ -83,6 +88,20 @@ mason_lspconfig.setup_handlers {
             filetypes = (servers[server_name] or {}).filetypes,
         }
     end
+}
+
+local mason_null_ls = require 'mason-null-ls'
+
+mason_null_ls.setup {
+    ensure_installed = { "black" },
+    handlers = {}
+}
+
+local null_ls = require 'null-ls'
+
+null_ls.setup {
+    -- Anything not supported by Mason
+    sources = { }
 }
 
 vim.diagnostic.config({
