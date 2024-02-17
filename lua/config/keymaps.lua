@@ -13,6 +13,8 @@ end
 -- Navigate by displayed lines
 map("n", "<Down>", "gj", defaults)
 map("n", "<Up>", "gk", defaults)
+map("n", "j", "gj", defaults)
+map("n", "k", "gk", defaults)
 
 -- Move to window using the <ctrl> arrow keys
 map("n", "<C-Left>", "<C-w>h", defaults)

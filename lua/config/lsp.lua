@@ -2,10 +2,10 @@
 
 -- [[ Configure LSP ]]
 
-vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = "" , texthl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
     local nmap = function(keys, func, desc)
@@ -101,7 +101,7 @@ local null_ls = require 'null-ls'
 
 null_ls.setup {
     -- Anything not supported by Mason
-    sources = { }
+    sources = {}
 }
 
 vim.diagnostic.config({
@@ -123,7 +123,10 @@ vim.diagnostic.config({
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
+-- require("luasnip.loaders.from_vscode").load({ include = { "python", "javascript", "shell", "html", "markdown" } })
+require('luasnip').filetype_extend("javascriptreact", { "html" })
+require('luasnip').filetype_extend("typescriptreact", { "html" })
+require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
@@ -171,5 +174,7 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        {name = 'buffer'},
+        {name = 'path'}
     },
 }
