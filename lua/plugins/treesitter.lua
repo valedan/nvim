@@ -1,15 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+		cond = not vim.g.vscode,
     build = ":TSUpdate",
     dependencies = {
       {"nvim-treesitter/nvim-treesitter-textobjects"}
     },
       cmd = { "TSUpdateSync" },
-  keys = {
-    { "<c-space>", desc = "Increment selection" },
-    { "<bs>", desc = "Decrement selection", mode = "x" },
-  },
     opts = {
     highlight = { enable = true },
     indent = { enable = true },
@@ -60,6 +57,7 @@ return {
 
   },
   { 'echasnovski/mini.ai', version = false,
+		cond = not vim.g.vscode,
   opts = {}
   },
 

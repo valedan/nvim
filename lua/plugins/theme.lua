@@ -1,7 +1,7 @@
 return {
-	{ "EdenEast/nightfox.nvim" },
 	{
 		"folke/tokyonight.nvim",
+  cond = not vim.g.vscode,
 		lazy = false,
 		priority = 1000,
 		opts = { style = "moon" },
@@ -9,20 +9,12 @@ return {
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
 	{
 		"sainnhe/sonokai",
+  cond = not vim.g.vscode,
 		opts = {},
 		config = function()
 			vim.g.sonokai_style = "default"
 			vim.g.sonokai_enable_italic = 1
 			vim.g.sonokai_dim_inactive_windows = 1
-		end,
-	},
-	{
-		"bluz71/vim-moonfly-colors",
-		name = "moonfly",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.g.moonflyWinSeparator = 1
 		end,
 	},
 }
