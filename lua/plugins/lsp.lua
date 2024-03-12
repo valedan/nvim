@@ -1,6 +1,7 @@
 return {
     {
         'neovim/nvim-lspconfig',
+        cond = not vim.g.vscode,
         dependencies = {
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
@@ -17,6 +18,7 @@ return {
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
+        cond = not vim.g.vscode,
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
             'L3MON4D3/LuaSnip',
@@ -33,6 +35,7 @@ return {
     },
     {
         "jay-babu/mason-null-ls.nvim",
+    cond = not vim.g.vscode,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",

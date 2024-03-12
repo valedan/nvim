@@ -17,6 +17,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-vim.cmd("colorscheme tokyonight")
+if vim.g.vscode then
+    -- vscode extension
+else
+  vim.cmd("colorscheme tokyonight")
 
-require('config.lsp')
+  require('config.lsp')
+end

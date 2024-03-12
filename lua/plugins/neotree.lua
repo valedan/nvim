@@ -1,14 +1,12 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+  cond = not vim.g.vscode,
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
     },
     opts = {
         enable_diagnostics = true,
