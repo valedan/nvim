@@ -1,10 +1,10 @@
 return {
 	"epwalsh/obsidian.nvim",
-  -- enabled = false,
+	-- enabled = false,
 	cond = not vim.g.vscode,
 	version = "*", -- recommended, use latest release instead of latest commit
-	lazy = true,
-	ft = "markdown",
+	lazy = false,
+	-- ft = "markdown",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -24,7 +24,7 @@ return {
 			-- Optional, if you want to change the date format of the default alias of daily notes.
 			-- alias_format = "%B %-d, %Y",
 			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-			template = nil,
+			template = "File/Daily.md",
 		},
 
 		-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -49,11 +49,12 @@ return {
 		--  * "current_dir" - put new notes in same directory as the current buffer.
 		--  * "notes_subdir" - put new notes in the default notes subdirectory.
 		new_notes_location = "notes_subdir",
-    notes_subdir = "1 Inbox",
+		notes_subdir = "1 Inbox",
 
 		-- Optional, customize how names/IDs for new notes are created.
-		-- note_id_func = function(title)
-		-- end,
+		note_id_func = function(title)
+			return title
+		end,
 
 		-- Optional, customize how markdown links are formatted.
 		---@param opts {path: string, label: string, id: string|?}
@@ -67,7 +68,7 @@ return {
 
 		-- Optional, boolean or a function that takes a filename and returns a boolean.
 		-- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-		disable_frontmatter = false,
+		disable_frontmatter = true,
 
 		-- Optional, alternatively you can customize the frontmatter data.
 		-- ---@return table

@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*", -- Adjust the pattern as needed
   callback = function()
     if vim.g.format_on_save then
-      vim.lsp.buf.formatting_sync(nil, 1000) -- Adjust the timeout as needed
+      vim.lsp.buf.format({async = false, timeout_ms = 1000}) -- Adjust the timeout as needed
     end
   end,
 })

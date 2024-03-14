@@ -20,7 +20,7 @@ return {
         ["<leader>fw"] = { name = "Workspace" },
         ["<leader>b"] = { name = "Buffer" },
         ["<leader>u"] = { name = "UI" },
-        ["<leader>o"] = { name = "Obsidian" },
+        ["<leader>e"] = { name = "Notes" },
       })
     end,
     opts = {
